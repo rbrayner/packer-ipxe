@@ -7,9 +7,9 @@ RUN yum install -y genisoimage \
                    wget \
                    make \
                    xz \
-                   xz-devel
+                   xz-devel \
                    gcc \
-                   gcc-c++ 
+                   gcc-c++
 
 # RUN yum install -y centos-release-scl
 # RUN yum install -y devtoolset-7-gcc-*
