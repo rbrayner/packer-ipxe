@@ -17,10 +17,13 @@ COPY chainload.ipxe /ipxe/src/
 RUN source /etc/bashrc
 RUN make ISOLINUX_BIN=isolinux.bin EMBED=chainload.ipxe
 RUN mkdir /ipxe/src/iso_file
-RUN cp -prf /ipxe/src/bin/ipxe.iso /ipxe/src/iso_file/
+RUN cp -prf /ipxe/src/bin/ipxe.iso /ipxe/src/nginx_files/
+WORKDIR /ipxe/src/nginx_files
+RUN wget http://mirror.centos.org/centos/7/os/x86_64/isolinux/initrd.img
+RUN wget http://mirror.centos.org/centos/7/os/x86_64/isolinux/vmlinuz
 
 FROM rbrayner/nginx-file-browser
-COPY --from=build /ipxe/src/iso_file /opt/www/files
+COPY --from=build /ipxe/src/nginx_files /opt/www/files
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
