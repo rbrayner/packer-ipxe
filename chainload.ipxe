@@ -1,0 +1,4 @@
+#!ipxe
+dhcp
+sleep 10
+chain http://\${dhcp-server}/latest/user-data
