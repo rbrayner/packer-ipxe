@@ -13,8 +13,8 @@ RUN make ISOLINUX_BIN=isolinux.bin EMBED=chainload.ipxe
 RUN mkdir /ipxe/src/iso_file ; cp -prf 
 
 
-FROM nginx:1.17.9-alpine
-COPY --from=build /ipxe/src/bin /usr/share/nginx/html
+FROM rbrayner/nginx-file-browser
+COPY --from=build /ipxe/src/bin /opt/www/files
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
