@@ -8,7 +8,7 @@ RUN yum install -y genisoimage \
                    xz \
                    xz-devel \
                    gcc \
-                   gcc-c++ \ ;
+                   gcc-c++ ; \
     git clone git://git.ipxe.org/ipxe.git
 
 WORKDIR /ipxe/src
